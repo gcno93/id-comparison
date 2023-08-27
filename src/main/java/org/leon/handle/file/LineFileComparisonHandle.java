@@ -3,7 +3,6 @@ package org.leon.handle.file;
 import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ObjectUtil;
 import com.google.common.collect.Sets;
-import lombok.*;
 import org.leon.handle.AbstractComparisonHandle;
 
 import java.util.*;
@@ -24,9 +23,9 @@ public class LineFileComparisonHandle extends AbstractComparisonHandle<List<Stri
         Set<String> targetSet = Sets.newHashSet(target);
         Set<String> excludeSet = Sets.newHashSet(exclude);
         //存在source，不在target的元素
-        Set<String> sourceDifference = Sets.difference(sourceSet, targetSet);
+        Set<String> sourceDifference = Sets.newHashSet(Sets.difference(sourceSet, targetSet));
         //存在target，不在source的元素
-        Set<String> targetDifference = Sets.difference(targetSet, sourceSet);
+        Set<String> targetDifference = Sets.newHashSet(Sets.difference(targetSet, sourceSet));
         //过滤掉排除的
         for (String e : excludeSet) {
             sourceDifference.remove(e);

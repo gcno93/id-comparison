@@ -22,7 +22,8 @@ public class App
                 .source(new SourceInputTemplate())
                 .target(new TargetInputTemplate())
                 .exclude(new ExcludeInputTemplate())
-                .output(new SimpleStringOutPutTemplate()).handle();
+                .output(new SimpleStringOutPutTemplate().isEnter(true).containTag("\""))
+                .handle();
         System.out.println(out);
 
     }
