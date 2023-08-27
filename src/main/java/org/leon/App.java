@@ -1,6 +1,12 @@
 package org.leon;
 
 import cn.hutool.core.io.file.FileReader;
+import org.leon.handle.AbstractComparisonHandle;
+import org.leon.handle.file.LineFileComparisonHandle;
+import org.leon.input.file.linefile.ExcludeInputTemplate;
+import org.leon.input.file.linefile.SourceInputTemplate;
+import org.leon.input.file.linefile.TargetInputTemplate;
+import org.leon.output.SimpleStringOutPutTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +18,12 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) {
-        List<String> sourceList = getIdsByFile("source.txt");
-        List<String> targetList = getIdsByFile("target.txt");
-        List<String> resultList = new ArrayList<>();
-        for (String s : sourceList) {
-            if(!targetList.contains(s)){
-                resultList.add(s);
-            }
-        }
-        for (String s : resultList) {
-            System.out.println(s);
-        }
+        String out = new LineFileComparisonHandle()
+                .source(new SourceInputTemplate())
+                .target(new TargetInputTemplate())
+                .exclude(new ExcludeInputTemplate())
+                .output(new SimpleStringOutPutTemplate()).handle();
+        System.out.println(out);
 
     }
 
