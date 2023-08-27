@@ -4,6 +4,8 @@ import cn.hutool.core.lang.Pair;
 import cn.hutool.core.util.ObjectUtil;
 import com.google.common.collect.Sets;
 import org.leon.handle.AbstractComparisonHandle;
+import org.leon.input.InputTemplate;
+import org.leon.output.OutputTemplate;
 
 import java.util.*;
 
@@ -35,4 +37,27 @@ public class LineFileComparisonHandle extends AbstractComparisonHandle<List<Stri
         return Pair.of(sourceDifference,targetDifference);
     }
 
+    @Override
+    public LineFileComparisonHandle source(InputTemplate<List<String>> s) {
+        super.source(s);
+        return this;
+    }
+
+    @Override
+    public LineFileComparisonHandle target(InputTemplate<List<String>> t) {
+        super.target(t);
+        return this;
+    }
+
+    @Override
+    public LineFileComparisonHandle exclude(InputTemplate<List<String>> e) {
+        super.exclude(e);
+        return this;
+    }
+
+    @Override
+    public LineFileComparisonHandle output(OutputTemplate<String, Pair<Set<String>, Set<String>>> o) {
+        super.output(o);
+        return this;
+    }
 }

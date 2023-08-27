@@ -1,14 +1,12 @@
 package org.leon;
 
 import cn.hutool.core.io.file.FileReader;
-import org.leon.handle.AbstractComparisonHandle;
 import org.leon.handle.file.LineFileComparisonHandle;
-import org.leon.input.file.linefile.ExcludeInputTemplate;
-import org.leon.input.file.linefile.SourceInputTemplate;
-import org.leon.input.file.linefile.TargetInputTemplate;
+import org.leon.input.file.FileLineInputTemplate;
 import org.leon.output.SimpleStringOutPutTemplate;
+import org.leon.parser.FileLineParser;
+import org.leon.parser.Parser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,10 +16,10 @@ import java.util.List;
 public class App 
 {
     public static void main( String[] args ) {
-        String out = new LineFileComparisonHandle()
-                .source(new SourceInputTemplate())
-                .target(new TargetInputTemplate())
-                .exclude(new ExcludeInputTemplate())
+        String out =  new LineFileComparisonHandle()
+                .source(new FileLineInputTemplate().parser(new FileLineParser("file/source.txt")))
+                .target(new FileLineInputTemplate().parser(new FileLineParser("file/target.txt")))
+                .exclude(new FileLineInputTemplate().parser(new FileLineParser("file/exclude.txt")))
                 .output(new SimpleStringOutPutTemplate().isEnter(true).containTag("\""))
                 .handle();
         System.out.println(out);

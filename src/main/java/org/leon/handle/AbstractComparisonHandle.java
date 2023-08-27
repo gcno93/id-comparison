@@ -31,22 +31,22 @@ public abstract class AbstractComparisonHandle<S,T,E,R,O> implements ComparisonH
 
     protected abstract R exec(S s,T t, E e);
 
-    public AbstractComparisonHandle<S,T,E,R,O> source(InputTemplate<S> s){
+    protected AbstractComparisonHandle<S,T,E,R,O> source(InputTemplate<S> s){
         this.source = s;
         return this;
     }
 
-    public AbstractComparisonHandle<S,T,E,R,O> target(InputTemplate<T> t){
+    protected AbstractComparisonHandle<S,T,E,R,O> target(InputTemplate<T> t){
         this.target = t;
         return this;
     }
 
-    public AbstractComparisonHandle<S,T,E,R,O> exclude(InputTemplate<E> e){
+    protected AbstractComparisonHandle<S,T,E,R,O> exclude(InputTemplate<E> e){
         this.exclude = e;
         return this;
     }
 
-    public AbstractComparisonHandle<S,T,E,R,O> output(OutputTemplate<O,R> o){
+    protected AbstractComparisonHandle<S,T,E,R,O> output(OutputTemplate<O,R> o){
         this.output =o;
         return this;
     }
